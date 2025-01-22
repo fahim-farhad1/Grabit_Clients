@@ -1,22 +1,29 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react"; // Import Swiper components from 'swiper/react'
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import "swiper/css"; // Import Swiper styles
 import "./Homebanner.css";
-import bannner1 from "../../../assets/banner/1.jpg";
-import bannner2 from "../../../assets/banner/2.jpg";
-import bannner3 from "../../../assets/banner/3.jpg";
-import bannner4 from "../../../assets/banner/5.jpg";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import bannner1 from "../../../assets/hero-bg/1.jpg";
+import bannner2 from "../../../assets/hero-bg/2.jpg";
+import bannner3 from "../../../assets/hero-bg/3.jpg";
+import bannner4 from "../../../assets/hero-bg/4.jpg";
+import {
+  FaAnglesRight,
+  FaArrowLeftLong,
+  FaArrowRightLong,
+} from "react-icons/fa6";
 
 const HomeBanner = () => {
   return (
-    <div className="relative mt-5">
+    <div className="relative mt-5 ">
       {/* Swiper Component */}
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Navigation, Pagination, Autoplay, Keyboard]}
         autoplay={{
-          delay: 2500,
+          delay: 3000,
+        }}
+        keyboard={{
+          enabled: true,
         }}
         navigation={{
           nextEl: ".swiper-button-next", // Custom button class
@@ -28,31 +35,79 @@ const HomeBanner = () => {
           renderBullet: (index, className) =>
             `<span class="${className} custom-bullet"></span>`,
         }}
+        speed={1500}
       >
-        {/* Slides */}
         <SwiperSlide>
           <div
-            className="w-full h-[500px] bg-cover"
+            className="w-full h-[500px] bg-cover "
             style={{ backgroundImage: `url(${bannner1})` }}
-          ></div>
+          >
+            <div className="ml-52 pt-44 space-y-3">
+              <p className="text-primary font-semibold text-xl">
+                Starting at $23
+              </p>
+              <h1 className="text-5xl font-semibold max-w-[400px]">
+                Organic & healthy vegetables
+              </h1>
+              <button className="bg-secondary hover:bg-primary px-5 py-2 rounded text-white flex items-center gap-1">
+                Shop Now <FaAnglesRight />
+              </button>
+            </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
             className="w-full h-[500px] bg-cover"
             style={{ backgroundImage: `url(${bannner2})` }}
-          ></div>
+          >
+            <div className="ml-52 pt-44 space-y-3">
+              <p className="text-primary font-semibold text-xl">
+                Starting at $23
+              </p>
+              <h1 className="text-5xl font-semibold max-w-[400px]">
+                Organic & healthy vegetables
+              </h1>
+              <button className="bg-secondary hover:bg-primary px-5 py-2 rounded text-white flex items-center gap-1">
+                Shop Now <FaAnglesRight />
+              </button>
+            </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
             className="w-full h-[500px] bg-cover"
             style={{ backgroundImage: `url(${bannner3})` }}
-          ></div>
+          >
+            <div className="ml-52 pt-44 space-y-3">
+              <p className="text-primary font-semibold text-xl">
+                Starting at $23
+              </p>
+              <h1 className="text-5xl font-semibold max-w-[400px]">
+                Organic & healthy vegetables
+              </h1>
+              <button className="bg-secondary hover:bg-primary px-5 py-2 rounded text-white flex items-center gap-1">
+                Shop Now <FaAnglesRight />
+              </button>
+            </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
             className="w-full h-[500px] bg-cover"
             style={{ backgroundImage: `url(${bannner4})` }}
-          ></div>
+          >
+            <div className="ml-52 pt-44 space-y-3">
+              <p className="text-primary font-semibold text-xl">
+                Starting at $23
+              </p>
+              <h1 className="text-5xl font-semibold max-w-[400px]">
+                Organic & healthy vegetables
+              </h1>
+              <button className="bg-secondary hover:bg-primary px-5 py-2 rounded text-white flex items-center gap-1">
+                Shop Now <FaAnglesRight />
+              </button>
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
       {/* Custom Navigation Buttons */}
