@@ -11,7 +11,7 @@ const ProductsCard = ({ img, name, weight, price }) => {
         <p className="line-through text-secondary">Tk {price}</p>
       </div>
       <button className="px-10 mb-1 mt-3 rounded py-2 hover:px-12 hover:py-3 active:bg-[#4c9279] duration-100 bg-primary text-white">
-        Quick Add
+        Add to Cart
       </button>
     </div>
   );
