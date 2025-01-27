@@ -9,7 +9,7 @@ const SwiperProducts = () => {
   const [products] = useProducts();
   console.log(products);
   return (
-    <div className=" rounded px-5 py-10 bg-white shadow-md mt-5">
+    <div className=" rounded px-5 py-10 bg-white mt-5">
       <Swiper
         slidesPerView={5}
         spaceBetween={30}

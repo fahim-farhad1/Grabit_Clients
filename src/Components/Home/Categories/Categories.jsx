@@ -7,7 +7,7 @@ const Categories = () => {
   const [categories] = useCategories();
   return (
     <div className="flex gap-5 mt-20 mx-10">
-      <Swiper
+      <Swiper 
         slidesPerView={8}
         spaceBetween={10}
         navigation={{
@@ -21,7 +21,7 @@ const Categories = () => {
         className=""
       >
         {categories.map((category, idx) => (
-          <SwiperSlide>
+          <SwiperSlide key={idx}>
             <Categorie
               key={idx}
               icon={category.image}

@@ -2,6 +2,7 @@ import Adds from "../../Components/Adds/Adds";
 import HomeBanner from "../../Components/Home/Banner/HomeBanner";
 import Categories from "../../Components/Home/Categories/Categories";
 import LeftSideHeader from "../../Components/Home/HeaderText/LeftSideHeader";
+import NewArrivals from "../../Components/Home/NewArrivals/NewArrivals";
 import SwiperProducts from "../../Components/Home/SwiperProducts/SwiperProducts";
 import TimeCount from "../../Components/Home/TimeCount/TimeCount";
 
@@ -22,6 +23,7 @@ const Home = () => {
       </div>
         <SwiperProducts />
         <Adds />
+        <NewArrivals />
     </div>
   );
 };

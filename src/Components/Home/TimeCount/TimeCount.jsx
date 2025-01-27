@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const CountdownTimer = ({ endTime }) => {
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
-    console.log(now);
+    // console.log(now);
     const timeLeft = endTime - now;
 
     if (timeLeft <= 0) return null;
