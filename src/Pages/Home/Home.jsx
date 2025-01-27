@@ -1,3 +1,4 @@
+import Adds from "../../Components/Adds/Adds";
 import HomeBanner from "../../Components/Home/Banner/HomeBanner";
 import Categories from "../../Components/Home/Categories/Categories";
 import LeftSideHeader from "../../Components/Home/HeaderText/LeftSideHeader";
@@ -20,6 +21,7 @@ const Home = () => {
         <TimeCount endTime={offerEndTime} />
       </div>
         <SwiperProducts />
+        <Adds />
     </div>
   );
 };
