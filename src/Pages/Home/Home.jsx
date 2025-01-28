@@ -1,4 +1,5 @@
 import Adds from "../../Components/Adds/Adds";
+import SmallAdds from "../../Components/Adds/smallAdds/SmallAdds";
 import HomeBanner from "../../Components/Home/Banner/HomeBanner";
 import Categories from "../../Components/Home/Categories/Categories";
 import LeftSideHeader from "../../Components/Home/HeaderText/LeftSideHeader";
@@ -24,6 +25,7 @@ const Home = () => {
         <SwiperProducts />
         <Adds />
         <NewArrivals />
+        <SmallAdds />
     </div>
   );
 };

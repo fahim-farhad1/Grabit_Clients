@@ -21,14 +21,14 @@ const NewArrivals = () => {
   }, [recentProducts]);
   console.log(updatedProducts);
   return (
-    <div>
+    <div className="mt-10">
       {/* heading sections  */}
       <LeftSideHeader
         headline1={"New"}
         headline2={"Arrivals"}
         subtitle={"Shop online for new arrivals and get free shipping!"}
       />
-      <div>
+      <div className="grid grid-cols-5 gap-5 mt-10">
         {updatedProducts.map((product, idx) => (
           <ProductsCard
             key={idx}

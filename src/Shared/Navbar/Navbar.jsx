@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="">
       <TopNavbar />
       <Rapper>
-        <div className="fixed z-10 top-0 w-[1265px] bg-white">
+        <div className="fixed z-50 top-0 w-[1265px] bg-white">
         <MiddleNav />
         </div>
         <MainNav />

@@ -32,10 +32,10 @@ const Categories = () => {
         ))}
       </Swiper>
       <div className="flex items-center text-xl text-primary">
-        <button className="swiper-button-prev2 absolute left-24 text-wh z-10">
+        <button className="swiper-button-prev2 absolute left-24">
           <FaArrowLeftLong />
         </button>
-        <button className="swiper-button-next2 absolute right-28 text-wh z-10">
+        <button className="swiper-button-next2 absolute right-28">
           <FaArrowRightLong />
         </button>
       </div>
