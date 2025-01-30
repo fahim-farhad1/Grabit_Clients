@@ -2,6 +2,7 @@ import Adds from "../../Components/Adds/Adds";
 import SmallAdds from "../../Components/Adds/smallAdds/SmallAdds";
 import HomeBanner from "../../Components/Home/Banner/HomeBanner";
 import Categories from "../../Components/Home/Categories/Categories";
+import Featured from "../../Components/Home/Featurers/featured";
 import LeftSideHeader from "../../Components/Home/HeaderText/LeftSideHeader";
 import NewArrivals from "../../Components/Home/NewArrivals/NewArrivals";
 import SwiperProducts from "../../Components/Home/SwiperProducts/SwiperProducts";
@@ -22,10 +23,19 @@ const Home = () => {
         />
         <TimeCount endTime={offerEndTime} />
       </div>
-        <SwiperProducts />
-        <Adds />
-        <NewArrivals />
-        <SmallAdds />
+      <SwiperProducts />
+      <Adds />
+      <Featured />
+      <NewArrivals />
+      <SmallAdds />
+      <LeftSideHeader
+        headline1={"Top Selling"}
+        headline2={"Products"}
+        subtitle={
+          "Discover Our Best-Selling Organic Foods – Fresh, Healthy, and Loved by Many"
+        }
+      />
+      <SwiperProducts />
     </div>
   );
 };

@@ -1,23 +1,20 @@
 import Categorie from "./Categorie";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCategories from "../../../Hooks/useCategories";
 const Categories = () => {
   const [categories] = useCategories();
   return (
-    <div className="flex gap-5 mt-20 mx-10">
-      <Swiper 
+    <div className="flex gap-5 mt-20">
+      <Swiper
         slidesPerView={8}
         spaceBetween={10}
-        navigation={{
-          nextEl: ".swiper-button-next2", // Custom button class
-          prevEl: ".swiper-button-prev2", // Custom button class
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         className=""
       >
         {categories.map((category, idx) => (
@@ -31,14 +28,6 @@ const Categories = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="flex items-center text-xl text-primary">
-        <button className="swiper-button-prev2 absolute left-24">
-          <FaArrowLeftLong />
-        </button>
-        <button className="swiper-button-next2 absolute right-28">
-          <FaArrowRightLong />
-        </button>
-      </div>
     </div>
   );
 };
