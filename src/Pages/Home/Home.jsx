@@ -27,6 +27,16 @@ const Home = () => {
       <Adds />
       <Featured />
       <NewArrivals />
+
+      <div className="flex justify-between items-center mt-8">
+        <LeftSideHeader
+          headline1={"Friday"}
+          headline2={"Deal"}
+          subtitle={"Don't wait. The time will never be just right."}
+        />
+        <TimeCount endTime={offerEndTime} />
+      </div>
+      <SwiperProducts />
       <SmallAdds />
       <LeftSideHeader
         headline1={"Top Selling"}

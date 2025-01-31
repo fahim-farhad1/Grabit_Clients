@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import LeftSideHeader from "../HeaderText/LeftSideHeader";
 import useProducts from "../../../Hooks/useProducts";
 import ProductsCard from "../../Cards/ProductsCard";
@@ -6,19 +6,22 @@ import ProductsCard from "../../Cards/ProductsCard";
 const NewArrivals = () => {
   const [products] = useProducts();
   const [updatedProducts, setUpdatedProducts] = useState([]);
-  const today = new Date();
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(today.getDate() - 7);
+  // Memoize the calculation of recentProducts
+  const recentProducts = useMemo(() => {
+    const today = new Date(); // Calculate today's date
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(today.getDate() - 7);
+    return products.filter((product) => {
+      const uploadDate = new Date(product.uploadDate); // Convert uploadDate to Date object
+      return uploadDate >= sevenDaysAgo && uploadDate <= today; // Check date range
+    });
+  }, [products]); // Recalculate only when `products` changes
 
-  // Filter products uploaded within the last 7 days
-  const recentProducts = products.filter((product) => {
-    const uploadDate = new Date(product.uploadDate); // Convert uploadDate to Date object
-    const items = uploadDate >= sevenDaysAgo && uploadDate <= today;
-    return items; // Check date range
-  });
+  // Update updatedProducts only when recentProducts changes
   useEffect(() => {
     setUpdatedProducts(recentProducts);
-  }, [recentProducts]);
+  }, [recentProducts]); // Dependency is stable as long as `products` doesn't change
+
   console.log(updatedProducts);
   return (
     <div className="mt-10">

@@ -3,14 +3,25 @@ import { FaAngleDown } from "react-icons/fa";
 const MainNav = () => {
   return (
     <div className="bg-white w-full flex items-center justify-between gap-5 mt-20">
-         <button className="bg-primary py-2 px-2 rounded w-[250px]">
-            <span className="text-white flex gap-1 items-center">
-            <BiCategory className="h-5 w-5"/>
-            <p className=" font-semibold">All Categorys</p>
-            <FaAngleDown />
-            </span>
-          </button>
-          <label className="input input-bordered flex items-center gap-2 w-full">
+      <button className="bg-primary py-2 px-2 rounded w-[250px]">
+        <span className="text-white flex gap-1 items-center">
+          <BiCategory className="h-5 w-5" />
+          {/* <p className=" font-semibold">All Categorys</p> */}
+          <details className="dropdown dropdown-">
+            <summary className="1">All Categories</summary>
+            <ul className="menu dropdown-content bg-white text-primary rounded-box z-10 w-52 p-2 shadow">
+              <li>
+                <a>Item 1</a>
+              </li>
+              <li>
+                <a>Item 2</a>
+              </li>
+            </ul>
+          </details>
+          <FaAngleDown />
+        </span>
+      </button>
+      <label className="input input-bordered flex items-center gap-2 w-full">
         <input type="text" className="grow p-3" placeholder="Search Products" />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,12 +37,12 @@ const MainNav = () => {
         </svg>
       </label>
       <button className="bg-primary py-2  px-2 rounded w-[250px]">
-            <span className="text-white flex gap-1 items-center">
-            <BiCategory className="h-5 w-5"/>
-            <p className=" font-semibold">All Categorys</p>
-            <FaAngleDown />
-            </span>
-          </button>
+        <span className="text-white flex gap-1 items-center">
+          <BiCategory className="h-5 w-5" />
+          <p className=" font-semibold">All Categorys</p>
+          <FaAngleDown />
+        </span>
+      </button>
     </div>
   );
 };
