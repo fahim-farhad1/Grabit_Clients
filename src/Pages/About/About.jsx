@@ -1,7 +1,8 @@
 import Container from "../../Components/Container/Container";
+import Featured from "../../Components/Home/Featurers/featured";
 import image2 from "../../assets/common/about-2.png";
-import image3 from "../../assets/common/about-3.png";
 import image1 from "../../assets/common/about.png";
+import image3 from "../../assets/common/login.png";
 
 const About = () => {
   return (
@@ -73,7 +74,21 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Container></Container>
+      <Container>
+        {/* our services */}
+        <div className="mt-10">
+          <div className="text-center space-y-2 w-[400px] flex flex-col items-center mx-auto">
+            <p className="text-secondary font-semibold text-2xl">
+              Our <span className="text-primary">Services</span>
+            </p>
+            <p className="">
+              Customer service should not be a department. It should be the
+              entire company.
+            </p>
+          </div>
+          <Featured />
+        </div>
+      </Container>
     </div>
   );
 };
