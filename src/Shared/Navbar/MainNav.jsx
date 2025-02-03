@@ -1,15 +1,28 @@
 import useCategories from "../../Hooks/useCategories";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiCategory } from "react-icons/bi";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 
 const MainNav = () => {
   const [Categories] = useCategories();
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   console.log(open);
   return (
     <div className="bg-white w-full flex items-center justify-between gap-5 mt-20">
-      <div className="relative inline-block text-left">
+      <div className="relative inline-block text-left" ref={dropdownRef}>
         {/* Button */}
         <button
           onClick={() => setOpen(!open)}
@@ -26,7 +39,7 @@ const MainNav = () => {
 
         {/* Dropdown */}
         <div
-          className={`absolute left-0 mt-2 bg-base-100 w-[250px] h-fit z-50 p-2 rounded transition-all duration-300 ease-in-out shadow-md border ${
+          className={`absolute left-0 mt-2 bg-base-100 w-[250px] h-fit z-20 p-2 rounded transition-all duration-300 ease-in-out shadow-md border ${
             open
               ? "opacity-100 translate-y-0 scale-100"
               : "opacity-0 -translate-y-5 scale-95 pointer-events-none"

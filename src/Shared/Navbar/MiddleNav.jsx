@@ -7,17 +7,19 @@ const MiddleNav = () => {
   const NavItems = (
     <>
       <NavLink to={'/'}>Home</NavLink>
-      <NavLink to={'/home'}>Home</NavLink>
-      <NavLink to={'/home'}>Home</NavLink>
-      <NavLink to={'/home'}>Home</NavLink>
+      <NavLink to={'/products'}>Products</NavLink>
+      <NavLink to={'/seasonal'}>Seasonal</NavLink>
+      <NavLink to={'/offers'}>Offers</NavLink>
+      <NavLink to={'/about'}>About Us</NavLink>
+      <NavLink to={'/contact'}>Contact Us</NavLink>
     </>
   );
   return (
-    <div className="flex justify-between items-center gap-20 ">
+    <div className="flex justify-between items-center">
       {/* search section  */}
       <div className="">
       <Link to={'/'}>
-        <img className="h-10" src={logo} alt="" />
+        <img className="h-10 mt-4" src={logo} alt="" />
       </Link>
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

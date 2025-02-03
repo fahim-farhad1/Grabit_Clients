@@ -3,7 +3,7 @@ import React from "react";
 const ProductsCard = ({ img, name, weight, price }) => {
   return (
     <div className=" w-[220px] h-[350px] text-center border rounded">
-      <img className="h-[200px] w-[220px]" src={img} alt={name} />
+      <img className="h-[200px] w-[220px] border" src={img} alt={name} />
       <p className="text-lg text-secondary font-semibold">{name}</p>
       <p className="text-primary">{weight}</p>
       <div className="flex justify-center gap-3 text-primary">

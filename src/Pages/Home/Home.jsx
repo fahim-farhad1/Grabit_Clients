@@ -1,5 +1,6 @@
 import Adds from "../../Components/Adds/Adds";
 import SmallAdds from "../../Components/Adds/smallAdds/SmallAdds";
+import Container from "../../Components/Container/Container";
 import HomeBanner from "../../Components/Home/Banner/HomeBanner";
 import Categories from "../../Components/Home/Categories/Categories";
 import Featured from "../../Components/Home/Featurers/featured";
@@ -7,12 +8,13 @@ import LeftSideHeader from "../../Components/Home/HeaderText/LeftSideHeader";
 import NewArrivals from "../../Components/Home/NewArrivals/NewArrivals";
 import SwiperProducts from "../../Components/Home/SwiperProducts/SwiperProducts";
 import TimeCount from "../../Components/Home/TimeCount/TimeCount";
+import useProducts from "../../Hooks/useProducts";
 
 const Home = () => {
   const offerEndTime = new Date("2025-01-31T23:59:59").getTime();
-  // console.log(offerEndTime)
+  const [products] = useProducts();
   return (
-    <div>
+    <Container>
       <HomeBanner />
       <Categories />
       <div className="flex justify-between items-center mt-8">
@@ -23,12 +25,11 @@ const Home = () => {
         />
         <TimeCount endTime={offerEndTime} />
       </div>
-      <SwiperProducts />
+      <SwiperProducts  products={products}/>
       <Adds />
       <Featured />
       <NewArrivals />
-
-      <div className="flex justify-between items-center mt-8">
+      <div className="flex justify-between items-center mt-8 ">
         <LeftSideHeader
           headline1={"Friday"}
           headline2={"Deal"}
@@ -36,7 +37,7 @@ const Home = () => {
         />
         <TimeCount endTime={offerEndTime} />
       </div>
-      <SwiperProducts />
+      <SwiperProducts products={products} />
       <SmallAdds />
       <LeftSideHeader
         headline1={"Top Selling"}
@@ -45,8 +46,8 @@ const Home = () => {
           "Discover Our Best-Selling Organic Foods – Fresh, Healthy, and Loved by Many"
         }
       />
-      <SwiperProducts />
-    </div>
+      <SwiperProducts products={products} />
+    </Container>
   );
 };
 

@@ -14,4 +14,7 @@ export default {
     },
   },
   plugins: [require('daisyui'),],
+  daisyui: {
+    themes: ["light"], // Disable all default themes, including dark mode
+  },
 };

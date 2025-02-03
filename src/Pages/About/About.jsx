@@ -1,10 +1,11 @@
+import Container from "../../Components/Container/Container"
 
 const About = () => {
   return (
-    <div>
-      <p>This is About Page</p>
-      <p>git testing commit</p>
-    </div>
+    <Container>
+      <p className="text-center text-7xl">Banner Sections </p>
+      <p>This is About Us page</p>
+    </Container>
   )
 }
 
