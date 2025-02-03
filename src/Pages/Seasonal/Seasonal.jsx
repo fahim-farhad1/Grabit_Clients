@@ -7,8 +7,10 @@ const Seasonal = () => {
   const [products] = useProducts();
   return (
     <Container>
-          <p className="text-center text-7xl">Banner Sections </p>
-      <div className="grid grid-cols-5 gap-5 my-10">
+      <p className="text-center text-7xl">Banner Sections </p>
+     <div className="space-y-5">
+     <p className="text-primary text-3xl font-semibold">Summer Season</p>
+      <div className="grid grid-cols-5 gap-5">
         {products.map((product, idx) => (
           <ProductsCard
             key={idx}
@@ -19,6 +21,7 @@ const Seasonal = () => {
           />
         ))}
       </div>
+     </div>
     </Container>
   );
 };

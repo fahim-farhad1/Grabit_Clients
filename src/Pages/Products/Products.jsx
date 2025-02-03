@@ -1,10 +1,11 @@
-import React from "react";
-import SwiperProducts from "../../Components/Home/SwiperProducts/SwiperProducts";
-import useProducts from "../../Hooks/useProducts";
+import Container from "../../Components/Container/Container";
 import LeftSideHeader from "../../Components/Home/HeaderText/LeftSideHeader";
 import LeftSideProductsHeadline from "../../Components/Home/HeaderText/LeftSideProductsHeadline";
+import SwiperProducts from "../../Components/Home/SwiperProducts/SwiperProducts";
 import useCategories from "../../Hooks/useCategories";
-import Container from "../../Components/Container/Container";
+import useProducts from "../../Hooks/useProducts";
+import React from "react";
+import { Link } from "react-router";
 
 const Products = () => {
   const [products] = useProducts();
@@ -12,16 +13,15 @@ const Products = () => {
   return (
     <Container className="bg-base-200 md:px-20">
       <p className="text-center text-7xl">Banner Sections </p>
-      {
-        categories.map((singleCategory, idx) => (
-          <div key={idx} className="border p-2 rounded shadow mt-10 bg-white">
-        <LeftSideProductsHeadline headline={singleCategory.name} />
-      <SwiperProducts products={products} />
-      </div>
-        ))
-      }
-     
-
+      {categories.map((singleCategory, idx) => (
+        <div key={idx} className="border p-2 rounded shadow mt-10 bg-white">
+          <span className="flex justify-between items-center">
+            <LeftSideProductsHeadline headline={singleCategory.name} />
+            <Link className="text-primary">See More</Link>
+          </span>
+          <SwiperProducts products={products} />
+        </div>
+      ))}
     </Container>
   );
 };
