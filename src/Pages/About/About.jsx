@@ -1,3 +1,6 @@
+import CenterHeaderText from "../../Components/AboutUs/CenterHeaderText";
+import GrowthStats from "../../Components/AboutUs/GrowthStats";
+import TeamMeamberSwiper from "../../Components/AboutUs/TeamMeamberSwiper";
 import Container from "../../Components/Container/Container";
 import Featured from "../../Components/Home/Featurers/featured";
 import image2 from "../../assets/common/about-2.png";
@@ -75,19 +78,26 @@ const About = () => {
         </div>
       </div>
       <Container>
+        {/* Growing state */}
+        <CenterHeaderText
+          firstWord={"Growing with"}
+          secundWord={"Nature"}
+          content={
+            "Pure, organic, and loved by many—our impact speaks for itself!"
+          }
+        />
         {/* our services */}
-        <div className="mt-10">
-          <div className="text-center space-y-2 w-[400px] flex flex-col items-center mx-auto">
-            <p className="text-secondary font-semibold text-2xl">
-              Our <span className="text-primary">Services</span>
-            </p>
-            <p className="">
-              Customer service should not be a department. It should be the
-              entire company.
-            </p>
-          </div>
-          <Featured />
-        </div>
+        <GrowthStats />
+        <CenterHeaderText firstWord={"Our"} secundWord={"Team"} content={"Meet out expert team members."} />
+        <TeamMeamberSwiper />
+        <CenterHeaderText
+          firstWord={"Our"}
+          secundWord={"Services"}
+          content={
+            "We offer a diverse range of organic food categories, carefully selected for your health and well-being."
+          }
+        />
+        <Featured />
       </Container>
     </div>
   );

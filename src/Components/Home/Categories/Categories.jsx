@@ -1,7 +1,6 @@
 import Categorie from "./Categorie";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import useCategories from "../../../Hooks/useCategories";
 const Categories = () => {
   const [categories] = useCategories();
@@ -15,7 +14,6 @@ const Categories = () => {
           disableOnInteraction: false,
         }}
         modules={[Navigation, Autoplay]}
-        className=""
       >
         {categories.map((category, idx) => (
           <SwiperSlide key={idx}>

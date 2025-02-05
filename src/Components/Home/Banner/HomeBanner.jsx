@@ -111,7 +111,7 @@ const HomeBanner = () => {
         </SwiperSlide>
       </Swiper>
       {/* Custom Navigation Buttons */}
-      <button className="swiper-button-prev absolute -mt-20 left-10 top-2/3 text-white bg-primary p-3 rounded-full z-10">
+      <button className={`swiper-button-prev absolute -mt-20 left-10 top-2/3 text-white bg-primary p-3 rounded-full z-10`}>
         <FaArrowLeftLong />
       </button>
       <button className="swiper-button-next absolute -mt-20 right-10 top-2/3 text-white bg-primary p-3 rounded-full z-10">

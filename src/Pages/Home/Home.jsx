@@ -11,7 +11,7 @@ import TimeCount from "../../Components/Home/TimeCount/TimeCount";
 import useProducts from "../../Hooks/useProducts";
 
 const Home = () => {
-  const offerEndTime = new Date("2025-01-31T23:59:59").getTime();
+  const offerEndTime = new Date("2027-02-06T23:59:59").getTime();
   const [products] = useProducts();
   return (
     <Container>
