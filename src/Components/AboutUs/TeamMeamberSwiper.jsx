@@ -1,6 +1,3 @@
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/autoplay";
 import useTeamMembers from "../../Hooks/useTeamMembers";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const TeamMeamberSwiper = () => {
   const [teamMembers] = useTeamMembers();
   return (
-    <div className="mt-10">
+    <div className="mt-10 h-[300px]">
       <Swiper
         slidesPerView={5}
         spaceBetween={30}
