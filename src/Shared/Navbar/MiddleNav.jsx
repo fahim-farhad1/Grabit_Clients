@@ -6,24 +6,99 @@ import { Link, NavLink } from "react-router";
 const MiddleNav = () => {
   const NavItems = (
     <>
-      <NavLink to={'/'}>Home</NavLink>
-      <NavLink to={'/products'}>Products</NavLink>
-      <NavLink to={'/seasonal'}>Seasonal</NavLink>
-      <NavLink to={'/offers'}>Offers</NavLink>
-      <NavLink to={'/about'}>About Us</NavLink>
-      <NavLink to={'/contact'}>Contact Us</NavLink>
+      <NavLink
+        to={"/"}
+        className={({ isActive }) =>
+          `relative pb-1 hover:text-primary ${
+            isActive ? "text-primary font-medium" : "text-secondary"
+          } 
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-0 after:h-[2px] after:bg-primary after:transition-all 
+    hover:after:w-full`
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/products"
+        className={({ isActive }) =>
+          `relative pb-1 hover:text-primary ${
+            isActive ? "text-primary font-medium" : "text-secondary"
+          } 
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-0 after:h-[2px] after:bg-primary after:transition-all 
+    hover:after:w-full`
+        }
+      >
+        Products
+      </NavLink>
+      <NavLink
+        to={"/seasonal"}
+        className={({ isActive }) =>
+          `relative pb-1 hover:text-primary ${
+            isActive ? "text-primary font-medium" : "text-gray-600"
+          } 
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-0 after:h-[2px] after:bg-primary after:transition-all 
+    hover:after:w-full`
+        }
+      >
+        Seasonal
+      </NavLink>
+      <NavLink
+        to={"/offers"}
+        className={({ isActive, isPending }) =>
+          `relative pb-1 hover:text-primary ${
+            isActive ? "text-primary font-medium" : "text-secondary"
+          } 
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-0 after:h-[2px] after:bg-primary after:transition-all 
+    hover:after:w-full`
+        }
+      >
+        Offers
+      </NavLink>
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          `relative pb-1 hover:text-primary ${
+            isActive ? "text-primary font-medium" : "text-secondary"
+          } 
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-0 after:h-[2px] after:bg-primary after:transition-all 
+    hover:after:w-full`
+        }
+      >
+        About Us
+      </NavLink>
+      <NavLink
+        to={"/contact"}
+        className={({ isActive }) =>
+          `relative pb-1 hover:text-primary ${
+            isActive ? "text-primary font-medium" : "text-secondary"
+          } 
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-0 after:h-[2px] after:bg-primary after:transition-all 
+    hover:after:w-full`
+        }
+      >
+        Contact Us
+      </NavLink>
     </>
   );
   return (
     <div className="flex justify-between items-center">
       {/* search section  */}
       <div className="">
-      <Link to={'/'}>
-        <img className="h-10 mt-4" src={logo} alt="" />
-      </Link>
+        <Link to={"/"}>
+          <img className="h-10 mt-4" src={logo} alt="" />
+        </Link>
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-          </div>
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden"
+          ></div>
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 shadow"
@@ -44,7 +119,7 @@ const MiddleNav = () => {
           </div>
         </button>
         <button className="flex items-center gap-1">
-        <IoHeartOutline  className="h-8 w-8"/>
+          <IoHeartOutline className="h-8 w-8" />
           <div>
             <p>Wishlist</p>
             <p className="font-bold items-center text-sm">3-Items</p>

@@ -22,7 +22,7 @@ const GoogleMap = () => {
     <MapContainer
       center={customLocation} // কাস্টম লোকেশন
       zoom={20}
-      style={{ height: "400px", width: "100%" }}
+      className="h-[400px] w-full"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
