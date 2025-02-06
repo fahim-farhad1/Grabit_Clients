@@ -21,7 +21,7 @@ const GoogleMap = () => {
   return (
     <MapContainer
       center={customLocation} // কাস্টম লোকেশন
-      zoom={13}
+      zoom={20}
       style={{ height: "400px", width: "100%" }}
     >
       <TileLayer
