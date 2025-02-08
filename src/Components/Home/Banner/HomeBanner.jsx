@@ -15,7 +15,7 @@ import {
 
 const HomeBanner = () => {
   return (
-    <div className="relative mt-5 ">
+    <div className="relative ">
       {/* Swiper Component */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay, Keyboard]}
