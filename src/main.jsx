@@ -10,13 +10,19 @@ import Seasonal from "./Pages/Seasonal/Seasonal";
 import Offers from "./Pages/Offers/Offers";
 import Contacts from "./Pages/Contact/Contacts";
 import About from "./Pages/About/About";
+import SignUp from "./Pages/Auth/SignUp";
+import Login from "./Pages/Auth/Login";
+import LoginLayout from "./Layouts/LoginLayout";
+import AuthProvider from "./Components/Provider/AuthProvider";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
+   <AuthProvider>
+   <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
+          {/* main layout  */}
           <Route element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="products" element={<Products />} />
@@ -25,8 +31,14 @@ createRoot(document.getElementById("root")).render(
             <Route path="contact" element={<Contacts />} />
             <Route path="about" element={<About />} />
           </Route>
+          {/* Auth Layout  */}
+          <Route element={<LoginLayout />}>
+            <Route path="login" element={<Login />} />
+            <Route path="signUp" element={<SignUp />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
+   </AuthProvider>
   </StrictMode>
 );
