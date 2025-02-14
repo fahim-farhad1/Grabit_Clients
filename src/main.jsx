@@ -14,6 +14,7 @@ import SignUp from "./Pages/Auth/SignUp";
 import Login from "./Pages/Auth/Login";
 import LoginLayout from "./Layouts/LoginLayout";
 import AuthProvider from "./Components/Provider/AuthProvider";
+import PrivateRoutes from "./Components/PrivateRoutes/PrivateRoutes";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
@@ -29,7 +30,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="seasonal" element={<Seasonal />} />
             <Route path="offers" element={<Offers />} />
             <Route path="contact" element={<Contacts />} />
-            <Route path="about" element={<About />} />
+            <Route path="about" element={<PrivateRoutes><About /></PrivateRoutes>} />
           </Route>
           {/* Auth Layout  */}
           <Route element={<LoginLayout />}>

@@ -25,6 +25,7 @@ const SwiperProducts = ({ products }) => {
               name={singleProducts.name}
               weight={singleProducts.weight}
               price={singleProducts.price}
+              stock={singleProducts.stock}
             />
           </SwiperSlide>
         ))}

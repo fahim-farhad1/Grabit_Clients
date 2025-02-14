@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import google from "../../assets/icons/logo.png";
 import hide from "../../assets/icons/hide.png";
 import view from "../../assets/icons/view.png";
@@ -10,6 +10,9 @@ import { use } from "react";
 const RegForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -22,6 +25,7 @@ const RegForm = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const message = error.message;
