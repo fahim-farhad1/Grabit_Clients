@@ -27,6 +27,7 @@ const MainNav = () => {
       if (currentScrollY > lastScrollY) {
         // Scrolling up
         setScrollDirection("up");
+        setOpen(false)
       } else if (currentScrollY < lastScrollY) {
         // Scrolling up
         setScrollDirection("down");
@@ -142,7 +143,7 @@ const MainNav = () => {
   return (
     <div
       className={`bg-white w-full flex items-center justify-between gap-5 mt-20 py-2 transition-transform duration-300 ${
-        scrollDirection === "down" ? "fixed -top-4 left-0 right-0 z-50 px-20 transform translate-y-1 duration-300" : "relative"
+        scrollDirection === "down" ? "fixed -top-[10px] left-0 right-0 z-40 px-20 transform translate-y-1 duration-300" : "relative"
       }`}
     >
       <div className="relative inline-block text-left" ref={dropdownRef}>

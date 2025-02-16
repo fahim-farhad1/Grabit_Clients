@@ -5,10 +5,12 @@ import google from "../../assets/icons/logo.png";
 import hide from "../../assets/icons/hide.png";
 import view from "../../assets/icons/view.png";
 import { AuthContext } from "../Provider/AuthProvider";
+import useCreateUser from "../../Hooks/useCreateUser";
 
 const LoginForm = () => {
   const { googleSignIn } = useContext(AuthContext);
   const { signIn } = useContext(AuthContext);
+  const [mutation] = useCreateUser();
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ const LoginForm = () => {
     signIn(data.email, data.password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        console.log(user)
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -37,6 +39,13 @@ const LoginForm = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        const userData = {
+          name: user.displayName,
+          image: user.photoURL,
+          email: user.email,
+        };
+        console.log(userData);
+        mutation(userData);
         navigate(from, { replace: true });
       })
       .catch((error) => {
