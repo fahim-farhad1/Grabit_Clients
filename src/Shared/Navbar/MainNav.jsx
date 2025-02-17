@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { BiCategory } from "react-icons/bi";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
-import AiIcon from '../../assets/icons/chatbot.png'
+import AiIcon from "../../assets/icons/chatbot.png";
 import { NavLink } from "react-router";
 import useCategories from "../../Hooks/useCategories";
+import { Modal } from "@mui/base";
+import { Backdrop, Box, Fade, Typography } from "@mui/material";
+import zIndex from "@mui/material/styles/zIndex";
 
 const debounce = (func, delay) => {
   let timeout;
@@ -27,7 +30,7 @@ const MainNav = () => {
       if (currentScrollY > lastScrollY) {
         // Scrolling up
         setScrollDirection("up");
-        setOpen(false)
+        setOpen(false);
       } else if (currentScrollY < lastScrollY) {
         // Scrolling up
         setScrollDirection("down");
@@ -143,7 +146,9 @@ const MainNav = () => {
   return (
     <div
       className={`bg-white w-full flex items-center justify-between gap-5 mt-20 py-2 transition-transform duration-300 ${
-        scrollDirection === "down" ? "fixed -top-[10px] left-0 right-0 z-40 px-20 transform translate-y-1 duration-300" : "relative"
+        scrollDirection === "down"
+          ? "fixed -top-[10px] left-0 right-0 z-40 px-20 transform translate-y-1 duration-300"
+          : "relative"
       }`}
     >
       <div className="relative inline-block text-left" ref={dropdownRef}>
@@ -185,10 +190,31 @@ const MainNav = () => {
         <ul className="flex gap-5">{NavItems}</ul>
       </div>
 
-      <button className="bg-primary py-2 px-2 rounded w-[220px] flex gap-1 items-center text-white">
+      <button
+        onClick={() => document.getElementById("my_modal_3").showModal()}
+        className="bg-primary py-2 px-2 rounded w-[220px] flex gap-1 items-center text-white"
+      >
         <img className="h-8 w-8 -mt-[3px]" src={AiIcon} alt="" />
         <p className=" mt-1 font-semibold">AI Shopping Assistant</p>
       </button>
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle hover:bg-red-500 btn-ghost hover:text-white absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <h3 className="font-bold text-primary text-lg">AI Shopping Assistant – Coming Soon!</h3>
+          <p className="py-4 text-secondary font-semibold">Smart Shopping Just Got Smarter!</p>
+          <p className="text-sm">We're working on an advanced AI Shopping Assistant to help you find the best products effortlessly. Soon, you'll be able to:</p>
+          <ol className="mt-2 text-sm">
+            <li>✅ Get personalized recommendations</li>
+            <li>✅ Compare products instantly</li>
+            <li>✅ Find the best deals with AI-powered insights</li>
+          </ol>
+        </div>
+      </dialog>
     </div>
   );
 };
