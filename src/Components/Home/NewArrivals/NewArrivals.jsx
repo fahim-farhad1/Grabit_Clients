@@ -26,11 +26,14 @@ const NewArrivals = () => {
   return (
     <div className="mt-10">
       {/* heading sections  */}
-      <LeftSideHeader
+      {
+        updatedProducts.length  ?  <LeftSideHeader
         headline1={"New"}
         headline2={"Arrivals"}
         subtitle={"Shop online for new arrivals and get free shipping!"}
-      />
+      /> : ""
+      }
+     
       <div className="grid grid-cols-5 gap-5 mt-10">
         {updatedProducts.map((product, idx) => (
           <ProductsCard

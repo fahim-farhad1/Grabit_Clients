@@ -19,7 +19,7 @@ const Products = () => {
             <LeftSideProductsHeadline headline={singleCategory.name} />
             <Link className="text-primary">See More</Link>
           </span>
-          <SwiperProducts products={products} />
+          <SwiperProducts products={products} idx={idx} />
         </div>
       ))}
     </Container>

@@ -15,31 +15,40 @@ import Login from "./Pages/Auth/Login";
 import LoginLayout from "./Layouts/LoginLayout";
 import AuthProvider from "./Components/Provider/AuthProvider";
 import PrivateRoutes from "./Components/PrivateRoutes/PrivateRoutes";
+import SingleProductsPage from "./Pages/SingleProductsPage/SingleProductsPage";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-   <AuthProvider>
-   <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          {/* main layout  */}
-          <Route element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route path="products" element={<Products />} />
-            <Route path="seasonal" element={<Seasonal />} />
-            <Route path="offers" element={<Offers />} />
-            <Route path="contact" element={<Contacts />} />
-            <Route path="about" element={<PrivateRoutes><About /></PrivateRoutes>} />
-          </Route>
-          {/* Auth Layout  */}
-          <Route element={<LoginLayout />}>
-            <Route path="login" element={<Login />} />
-            <Route path="signUp" element={<SignUp />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
-   </AuthProvider>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            {/* main layout  */}
+            <Route element={<MainLayout />}>
+              <Route index element={<Home />} />
+              <Route path="products" element={<Products />} />
+              <Route path="seasonal" element={<Seasonal />} />
+              <Route path="offers" element={<Offers />} />
+              <Route path="contact" element={<Contacts />} />
+              <Route
+                path="about"
+                element={
+                  <PrivateRoutes>
+                    <About />
+                  </PrivateRoutes>
+                }
+              />
+            <Route path="/products/:category/:name/:id" element={<SingleProductsPage />}/>
+            </Route>
+            {/* Auth Layout  */}
+            <Route element={<LoginLayout />}>
+              <Route path="login" element={<Login />} />
+              <Route path="signUp" element={<SignUp />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </AuthProvider>
   </StrictMode>
 );

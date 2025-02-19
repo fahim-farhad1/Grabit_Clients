@@ -25,7 +25,7 @@ const Home = () => {
         />
         <TimeCount endTime={offerEndTime} />
       </div>
-      <SwiperProducts  products={products}/>
+      <SwiperProducts  products={products} idx={1}/>
       <Adds />
       <Featured />
       <NewArrivals />
@@ -37,7 +37,7 @@ const Home = () => {
         />
         <TimeCount endTime={offerEndTime} />
       </div>
-      <SwiperProducts products={products} />
+      <SwiperProducts products={products} idx={2} />
       <SmallAdds />
       <LeftSideHeader
         headline1={"Top Selling"}
@@ -46,7 +46,7 @@ const Home = () => {
           "Discover Our Best-Selling Organic Foods – Fresh, Healthy, and Loved by Many"
         }
       />
-      <SwiperProducts products={products} />
+      <SwiperProducts products={products} idx={3}/>
     </Container>
   );
 };

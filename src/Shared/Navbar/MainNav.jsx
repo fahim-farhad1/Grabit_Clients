@@ -205,7 +205,7 @@ const MainNav = () => {
               ✕
             </button>
           </form>
-          <h3 className="font-bold text-primary text-lg">AI Shopping Assistant – Coming Soon!</h3>
+          <h3 className="font-bold text-primary text-lg">AI Shopping Assistant - Coming Soon!</h3>
           <p className="py-4 text-secondary font-semibold">Smart Shopping Just Got Smarter!</p>
           <p className="text-sm">We're working on an advanced AI Shopping Assistant to help you find the best products effortlessly. Soon, you'll be able to:</p>
           <ol className="mt-2 text-sm">

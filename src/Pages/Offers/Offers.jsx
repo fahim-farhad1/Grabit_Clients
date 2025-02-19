@@ -18,6 +18,8 @@ const Offers = () => {
             name={singleProducts.name}
             weight={singleProducts.weight}
             price={singleProducts.price}
+            id={singleProducts._id}
+            category={singleProducts.category}
           />
         ))}
       </div>
