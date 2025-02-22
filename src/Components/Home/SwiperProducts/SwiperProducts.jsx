@@ -1,10 +1,11 @@
 import ProductsCard from "../../Cards/ProductsCard";
-import React from "react";
+import React, { useContext } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const SwiperProducts = ({ products, idx }) => {
+const SwiperProducts = ({ products, idx, email }) => {
+ 
   return (
     <div className=" rounded px-5 py-5 bg-white">
       <Swiper
@@ -28,6 +29,8 @@ const SwiperProducts = ({ products, idx }) => {
               stock={singleProducts.stock}
               id={singleProducts._id}
               category={singleProducts.category}
+              email={email}
+              slug={singleProducts.slug}
             />
           </SwiperSlide>
         ))}
@@ -36,14 +39,14 @@ const SwiperProducts = ({ products, idx }) => {
       <button
         className={`${
           products.length != 0 ? "block" : "hidden"
-        } swiper-button-prev3-${idx} absolute left-20 text-white bg-primary px-2 py-6 rounded z-10 -mt-48`}
+        } swiper-button-prev3-${idx} absolute left-20 text-white bg-primary px-2 py-6 rounded z-10 -mt-60`}
       >
         <FaArrowLeftLong />
       </button>
       <button
         className={`${
           products.length != 0 ? "block" : "hidden"
-        } swiper-button-next3-${idx} absolute right-20 text-white bg-primary px-2 py-6 rounded z-10 -mt-48`}
+        } swiper-button-next3-${idx} absolute right-20 text-white bg-primary px-2 py-6 rounded z-10 -mt-60`}
       >
         <FaArrowRightLong />
       </button>

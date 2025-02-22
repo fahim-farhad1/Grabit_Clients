@@ -3,20 +3,43 @@ import Container from "../../Components/Container/Container";
 import useSingleProducts from "../../Hooks/useSingleProducts";
 import shopingCartIcon from "../../assets/icons/shopping-cart.png";
 import wishListtIcon from "../../assets/icons/heart.png";
+import Loading from "../../Components/Loading/Loading";
+import useUsers from "../../Hooks/useUsers";
+import usePostwishList from "../../Hooks/usePostwishList";
+import usePostCard from "../../Hooks/usePostCard";
 
 const SingleProductsPage = () => {
   const { category, name, id } = useParams();
   const [product, isLoading] = useSingleProducts(category, name, id);
-  console.log(product);
-  console.log(category, name, id);
+  const [users] = useUsers();
+  const [mutation] = usePostCard();
+  const [mutationWishlist] = usePostwishList();
+
   if (isLoading) {
-    return <p>Loading......</p>;
+    return <Loading />;
   }
+
+  const handleWishlist = (id) => {
+    const wishListInfo = {
+      userEmail: users?.email,
+      productId: id,
+    };
+
+    mutationWishlist(wishListInfo);
+  };
+  const handelCart = (id) => {
+    const cartInfo = {
+      userEmail: users?.email,
+      productId: id,
+    };
+
+    mutation(cartInfo);
+  };
 
   return (
     <Container>
       <section className="">
-        <div className="flex gap-5 border p-3">
+        <div className="flex gap-5 p-3">
           <img
             className="h-[400px] w-[400px]"
             src={product?.images?.[0]}
@@ -65,17 +88,59 @@ const SingleProductsPage = () => {
             )}
 
             <div className="flex gap-5">
-              <button className="flex gap-2 items-center font-semibold px-5 mb-1 mt-3 rounded py-2 active:bg-[#4c9279] duration-100 bg-primary text-white">
+              <button
+                onClick={() => handelCart(product._id)}
+                className={`${
+                  product.stock != 0
+                    ? "flex gap-2 items-center font-semibold px-5 mb-1 mt-3 rounded py-2 active:bg-[#4c9279] duration-100 bg-primary text-white"
+                    : "hidden"
+                }`}
+              >
                 <img className="h-6 w-6" src={shopingCartIcon} alt="" />
                 Add to Cart
               </button>
-              <button className="flex gap-2 items-center font-semibold px-5 mb-1 mt-3 rounded py-2 active:bg-[#3b3c3c] duration-100 bg-secondary text-white">
+              <button
+                onClick={() => handleWishlist(product._id)}
+                className={`${
+                  product.stock != 0
+                    ? "flex gap-2 items-center font-semibold px-5 mb-1 mt-3 rounded py-2 active:bg-[#3b3c3c] duration-100 bg-secondary text-white"
+                    : "hidden"
+                }`}
+              >
                 <img className="h-6 w-6" src={wishListtIcon} alt="" />
                 Add to Wishlist
               </button>
             </div>
           </div>
         </div>
+      </section>
+      {/* products details  */}
+      <hr />
+      <section className="mt-10 space-y-3">
+        <p className="text-primary font-semibold text-2xl">Descriptions</p>
+        <p>{product.description}</p>
+        <p>
+          <span className="font-semibold text-secondary">Products Type:</span>{" "}
+          {product.category}
+        </p>
+        <p>
+          <span className="font-semibold text-secondary">Category:</span>{" "}
+          {product.category}
+        </p>
+        <p>
+          <span className="font-semibold text-secondary">manufacturer:</span>{" "}
+          {product.manufacturer.name}
+        </p>
+        <p>
+          <span className="font-semibold text-secondary">
+            Health and benefits of {product.name}: <br />
+          </span>{" "}
+          {product.healthBenefits.map((benefits, idx) => (
+            <li key={idx} className="font-normal text-secondary">
+              {benefits}
+            </li>
+          ))}
+        </p>
       </section>
     </Container>
   );

@@ -20,6 +20,7 @@ const Offers = () => {
             price={singleProducts.price}
             id={singleProducts._id}
             category={singleProducts.category}
+            slug={singleProducts.slug}
           />
         ))}
       </div>

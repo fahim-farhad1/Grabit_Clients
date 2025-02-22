@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import Adds from "../../Components/Adds/Adds";
 import SmallAdds from "../../Components/Adds/smallAdds/SmallAdds";
 import Container from "../../Components/Container/Container";
@@ -8,11 +9,17 @@ import LeftSideHeader from "../../Components/Home/HeaderText/LeftSideHeader";
 import NewArrivals from "../../Components/Home/NewArrivals/NewArrivals";
 import SwiperProducts from "../../Components/Home/SwiperProducts/SwiperProducts";
 import TimeCount from "../../Components/Home/TimeCount/TimeCount";
+import { AuthContext } from "../../Components/Provider/AuthProvider";
 import useProducts from "../../Hooks/useProducts";
+import Loading from "../../Components/Loading/Loading";
 
 const Home = () => {
   const offerEndTime = new Date("2027-02-06T23:59:59").getTime();
-  const [products] = useProducts();
+  const [products, isLoading] = useProducts();
+  const {user} = useContext(AuthContext);
+  if( isLoading ) {
+    return <Loading />
+  }
   return (
     <Container>
       <HomeBanner />
@@ -25,7 +32,7 @@ const Home = () => {
         />
         <TimeCount endTime={offerEndTime} />
       </div>
-      <SwiperProducts  products={products} idx={1}/>
+      <SwiperProducts  products={products} idx={1} email={user?.email}/>
       <Adds />
       <Featured />
       <NewArrivals />
@@ -37,7 +44,7 @@ const Home = () => {
         />
         <TimeCount endTime={offerEndTime} />
       </div>
-      <SwiperProducts products={products} idx={2} />
+      <SwiperProducts products={products} idx={2} email={user?.email}/>
       <SmallAdds />
       <LeftSideHeader
         headline1={"Top Selling"}
@@ -46,7 +53,7 @@ const Home = () => {
           "Discover Our Best-Selling Organic Foods – Fresh, Healthy, and Loved by Many"
         }
       />
-      <SwiperProducts products={products} idx={3}/>
+      <SwiperProducts products={products} idx={3} email={user?.email}/>
     </Container>
   );
 };

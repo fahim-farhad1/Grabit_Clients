@@ -18,6 +18,10 @@ const Seasonal = () => {
             name={product.name}
             weight={product.weight}
             price={product.price}
+            stock={product.stock}
+            category={product.category}
+            slug={product.slug}
+            id={product._id}
           />
         ))}
       </div>

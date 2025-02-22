@@ -4,9 +4,7 @@ import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import AiIcon from "../../assets/icons/chatbot.png";
 import { NavLink } from "react-router";
 import useCategories from "../../Hooks/useCategories";
-import { Modal } from "@mui/base";
-import { Backdrop, Box, Fade, Typography } from "@mui/material";
-import zIndex from "@mui/material/styles/zIndex";
+
 
 const debounce = (func, delay) => {
   let timeout;
@@ -166,7 +164,7 @@ const MainNav = () => {
         </button>
 
         <div
-          className={`absolute left-0 mt-2 bg-base-100 w-[250px] h-fit z-20 p-2 rounded transition-all duration-300 ease-in-out shadow-md border ${
+          className={`absolute left-0 mt-2 bg-base-100 w-[250px] h-[500px] overflow-y-auto z-20 p-2 rounded transition-all duration-300 ease-in-out shadow-md border ${
             open
               ? "opacity-100 translate-y-0 scale-100"
               : "opacity-0 -translate-y-5 scale-95 pointer-events-none"

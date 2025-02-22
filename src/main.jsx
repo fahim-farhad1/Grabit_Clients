@@ -31,15 +31,19 @@ createRoot(document.getElementById("root")).render(
               <Route path="seasonal" element={<Seasonal />} />
               <Route path="offers" element={<Offers />} />
               <Route path="contact" element={<Contacts />} />
+              <Route path="about" element={<About />} />
               <Route
-                path="about"
-                element={
-                  <PrivateRoutes>
-                    <About />
-                  </PrivateRoutes>
-                }
+                path="/products/:category/:slug/:id"
+                element={<SingleProductsPage />}
               />
-            <Route path="/products/:category/:name/:id" element={<SingleProductsPage />}/>
+              <Route
+                path="/seasonal/:category/:slug/:id"
+                element={<SingleProductsPage />}
+              />
+              <Route
+                path="/offers/:category/:slug/:id"
+                element={<SingleProductsPage />}
+              />
             </Route>
             {/* Auth Layout  */}
             <Route element={<LoginLayout />}>
