@@ -1,4 +1,10 @@
-import { useParams } from "react-router";
+import {
+  Navigate,
+  replace,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router";
 import Container from "../../Components/Container/Container";
 import useSingleProducts from "../../Hooks/useSingleProducts";
 import shopingCartIcon from "../../assets/icons/shopping-cart.png";
@@ -7,34 +13,64 @@ import Loading from "../../Components/Loading/Loading";
 import useUsers from "../../Hooks/useUsers";
 import usePostwishList from "../../Hooks/usePostwishList";
 import usePostCard from "../../Hooks/usePostCard";
+import useLocalStorage from "../../Hooks/useLocalStorage";
+import Swal from "sweetalert2";
+import React from "react";
 
 const SingleProductsPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { category, name, id } = useParams();
   const [product, isLoading] = useSingleProducts(category, name, id);
   const [users] = useUsers();
   const [mutation] = usePostCard();
   const [mutationWishlist] = usePostwishList();
+  const [, addProducts, ,] = useLocalStorage("ProductIds", []);
+  // const [productsValue, setProductsValue] = useState([]);
 
   if (isLoading) {
     return <Loading />;
   }
 
+  console.log(users);
   const handleWishlist = (id) => {
-    const wishListInfo = {
-      userEmail: users?.email,
-      productId: id,
-    };
-
-    mutationWishlist(wishListInfo);
+    if (users?.email) {
+      const wishListInfo = {
+        userEmail: users?.email,
+        productId: id,
+      };
+      mutationWishlist(wishListInfo);
+    } else {
+      addProducts(id); // এখন কাজ করবে
+      console.log("Local Storage Updated:", localStorage.getItem("cart")); // Check localStorage value
+    }
   };
+
   const handelCart = (id) => {
-    const cartInfo = {
-      userEmail: users?.email,
-      productId: id,
-    };
-
-    mutation(cartInfo);
+    if (users?.email) {
+      const cartInfo = {
+        userEmail: users?.email,
+        productId: id,
+      };
+      mutation(cartInfo);
+    } else {
+      Swal.fire({
+        title: "Login Required",
+        text: "Please Login",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#5CAF90",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
   };
+
+  //localstorage
 
   return (
     <Container>
@@ -66,7 +102,7 @@ const SingleProductsPage = () => {
                 Health and Benefits:
               </p>
               <ul>
-                {product.healthBenefits.map((benefits, idx) => (
+                {product?.healthBenefits?.map((benefits, idx) => (
                   <li key={idx} className="font-normal text-secondary">
                     {benefits}
                   </li>

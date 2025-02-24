@@ -5,7 +5,20 @@ import useWishlist from "./useWishlist";
 
 const usePostwishList = () => {
   const instance = useAxios();
-  const [refetch,] = useWishlist()
+  const [refetch] = useWishlist();
+
+  // tost
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
 
   const { mutate } = useMutation({
     mutationFn: async (wishListInfo) => {
@@ -15,21 +28,15 @@ const usePostwishList = () => {
     onSuccess: async (data) => {
       console.log("wishlist data:-", data);
       if (data.modifiedCount != 0) {
-        Swal.fire({
-          position: "top-end",
+        Toast.fire({
           icon: "success",
-          title: "Products added!  ",
-          showConfirmButton: false,
-          timer: 1500,
+          title: "products added successfully",
         });
-        refetch()
+        refetch();
       } else {
-        Swal.fire({
-          position: "top-end",
+        Toast.fire({
           icon: "error",
-          title: "Products already added!",
-          showConfirmButton: false,
-          timer: 1500,
+          title: "products already in wishlist!",
         });
       }
     },

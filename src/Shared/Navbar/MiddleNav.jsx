@@ -9,14 +9,17 @@ import { AuthContext } from "../../Components/Provider/AuthProvider";
 import { FaAngleDown } from "react-icons/fa6";
 import useCarts from "../../Hooks/useCarts";
 import useWishlist from "../../Hooks/useWishlist";
+import usePostwishList from "../../Hooks/usePostwishList";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 const MiddleNav = () => {
   const { user, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [,cart] = useCarts();
-  const [,wishlist] = useWishlist();
-  console.log("carts:---", user)
-
+  const [, cart] = useCarts();
+  const [, wishlist] = useWishlist();
+  const [value, , , clearItems] = useLocalStorage("ProductIds", []);
+  const [mutation] = usePostwishList();
+  console.log("carts:---", user, value, wishlist);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -40,6 +43,18 @@ const MiddleNav = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+  }, [user]);
+
+  useEffect(() => {
+    if (user?.email) {
+      const wishListInfo = {
+        userEmail: user?.email,
+        productId: value,
+      };
+      console.log(wishListInfo);
+      mutation(wishListInfo);
+      clearItems();
+    }
   }, [user]);
 
   return (
@@ -111,12 +126,12 @@ const MiddleNav = () => {
           <div>
             <p
               className={`${
-                wishlist?.productId?.length && user
+                wishlist?.productId?.length
                   ? "font-bold text-[12px] bg-red-500 text-white px-[7px] py-[2px] rounded-full absolute top-[10px] right-[120px]"
                   : "hidden"
               } `}
             >
-              {wishlist?.productId?.length}
+              {wishlist?.productId?.length || value?.productId?.length}
             </p>
           </div>
         </button>

@@ -3,7 +3,7 @@ import useAxios from "./useAxios";
 import { useContext } from "react";
 import { AuthContext } from "../Components/Provider/AuthProvider";
 
-const useUsers = ( enabled) => {
+const useUsers = () => {
   const instance = useAxios();
   const {user} = useContext(AuthContext);
   const { data: users = [] } = useQuery({

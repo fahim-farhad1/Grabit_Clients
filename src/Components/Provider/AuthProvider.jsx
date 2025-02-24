@@ -9,12 +9,16 @@ import {
 import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import auth from "../Firebase/Firebase.config";
+import useLocalStorage from "../../Hooks/useLocalStorage";
+import usePostwishList from "../../Hooks/usePostwishList";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
+
+
   // providers
   const googleProvider = new GoogleAuthProvider();
 
@@ -49,7 +53,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth);
   };
-  const authInfo = { googleSignIn, createUser, signIn, user, loading,logOut };
+
+  // data pass on localstorage to database
+
+  const authInfo = { googleSignIn, createUser, signIn, user, loading, logOut };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

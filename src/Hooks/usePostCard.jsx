@@ -6,6 +6,17 @@ import useCarts from "./useCarts";
 const usePostCard = () => {
   const instance = useAxios();
   const [refetch, ] = useCarts()
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
   const { mutate } = useMutation({
     mutationFn: async (cartInfo) => {
@@ -16,21 +27,15 @@ const usePostCard = () => {
     onSuccess: (data) => {
       console.log("✅ User created successfully:", data);
       if (data.modifiedCount != 0) {
-        Swal.fire({
-          position: "top-end",
+        Toast.fire({
           icon: "success",
-          title: "Products added!  ",
-          showConfirmButton: false,
-          timer: 1500,
+          title: "products added successfully"
         });
         refetch()
       } else {
-        Swal.fire({
-          position: "top-end",
+        Toast.fire({
           icon: "error",
-          title: "Products already added!",
-          showConfirmButton: false,
-          timer: 1500,
+          title: "product already in cart"
         });
       }
     },
