@@ -4,11 +4,13 @@ import shopingCartIcon from "../../../assets/icons/shopping-cart.png";
 import Swal from "sweetalert2";
 import useUsers from "../../../Hooks/useUsers";
 import usePostCard from "../../../Hooks/usePostCard";
+import usePatchWishList from "../../../Hooks/usePatchWishList";
 
 const WishlistCart = ({ id, isRemove }) => {
   const [wishListProducts, isLoading] = useWishListProducts(id);
   const [users] = useUsers();
   const [mutation] = usePostCard();
+  const [removeProduct] = usePatchWishList();
   console.log(wishListProducts);
   const { name, price, discount, images, category, stock } = wishListProducts;
 
@@ -40,7 +42,12 @@ const WishlistCart = ({ id, isRemove }) => {
     // remove products
   };
   const handleRemove = (id) => {
-    isRemove(id);
+    // isRemove(id);
+    const wishlistInfo = {
+      productId: id,
+      userEmail: users?.email,
+    };
+    removeProduct(wishlistInfo);
   };
   return (
     <div className=" border-b border-primary flex justify-between items-center">
