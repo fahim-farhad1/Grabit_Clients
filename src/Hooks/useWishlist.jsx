@@ -8,7 +8,7 @@ const useWishlist = () => {
   const instance = useAxios();
   const {user} = useContext(AuthContext)
   // const {user} = useContext(AuthContext);
-  const {refetch, data : wishlist = []} = useQuery({
+  const {refetch, data : wishlist = [] , isLoading} = useQuery({
     queryKey: ["wishlist",user?.email],
     enabled: !!user?.email, 
     queryFn: async () =>{
@@ -16,7 +16,7 @@ const useWishlist = () => {
        return res.data
     }
   })
-  return [refetch,wishlist]
+  return [refetch,wishlist, isLoading]
 }
 
 export default useWishlist

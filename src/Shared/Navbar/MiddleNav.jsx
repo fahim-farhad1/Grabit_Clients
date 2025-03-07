@@ -19,7 +19,7 @@ const MiddleNav = () => {
   const [, wishlist] = useWishlist();
   const [value, , , clearItems] = useLocalStorage("ProductIds", []);
   const [mutation] = usePostwishList();
-  console.log("carts:---", user, value, wishlist);
+  // console.log("carts:---", user, value?.length, wishlist);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -46,12 +46,12 @@ const MiddleNav = () => {
   }, [user]);
 
   useEffect(() => {
-    if (user?.email) {
+    if (user?.email && value?.length != 0) {
       const wishListInfo = {
         userEmail: user?.email,
         productId: value,
       };
-      console.log(wishListInfo);
+      console.log(value);
       mutation(wishListInfo);
       clearItems();
     }
@@ -121,21 +121,23 @@ const MiddleNav = () => {
           </div>
         </div>
 
-        <button className="flex items-center gap-1">
+       <Link to='userDashboard/account'>
+       <button className="flex items-center gap-1">
           <IoHeartOutline className="h-8 w-8" />
           <div>
             <p
               className={`${
-                wishlist?.productId?.length
+                wishlist?.productId?.length || value?.length
                   ? "font-bold text-[12px] bg-red-500 text-white px-[7px] py-[2px] rounded-full absolute top-[10px] right-[120px]"
                   : "hidden"
               } `}
             >
-              {wishlist?.productId?.length || value?.productId?.length}
+              {wishlist?.productId?.length || value?.length}
             </p>
           </div>
         </button>
-        <button className="flex items-center gap-1 relative">
+       </Link>
+        <button  className="flex items-center gap-1 relative">
           <FiShoppingCart className="h-8 w-8" />
           <div>
             <p

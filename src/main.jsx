@@ -16,6 +16,9 @@ import LoginLayout from "./Layouts/LoginLayout";
 import AuthProvider from "./Components/Provider/AuthProvider";
 import PrivateRoutes from "./Components/PrivateRoutes/PrivateRoutes";
 import SingleProductsPage from "./Pages/SingleProductsPage/SingleProductsPage";
+import UserDashboard from "./Layouts/UserDashboard";
+import MyAccount from "./Components/UserSidebar/MyAccount/MyAccount";
+import WishList from "./Components/UserSidebar/WshList/WishList";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
@@ -37,6 +40,10 @@ createRoot(document.getElementById("root")).render(
                 element={<SingleProductsPage />}
               />
               <Route
+                path="/:category/:slug/:id"
+                element={<SingleProductsPage />}
+              />
+              <Route
                 path="/seasonal/:category/:slug/:id"
                 element={<SingleProductsPage />}
               />
@@ -44,6 +51,12 @@ createRoot(document.getElementById("root")).render(
                 path="/offers/:category/:slug/:id"
                 element={<SingleProductsPage />}
               />
+            {/* user Dashboard  */}
+            <Route path="userDashboard" element={<UserDashboard />}>
+            <Route path="account" element={<MyAccount />} />
+            <Route path="wishlist" element={<WishList />} />
+            
+            </Route>
             </Route>
             {/* Auth Layout  */}
             <Route element={<LoginLayout />}>

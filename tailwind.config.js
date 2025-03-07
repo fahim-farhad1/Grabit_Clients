@@ -6,7 +6,7 @@ export default {
       colors: {
         primary: "#5CAF90",
         secondary: "#4B5966",
-        background: '#F8F8FB',
+        background: "#F8F8FB",
         accent: "#FF7070",
         rating: "#F7A465",
         white: "#FFFFFF",
@@ -14,7 +14,7 @@ export default {
       },
     },
   },
-  plugins: [require('daisyui'),],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: ["light"], // Disable all default themes, including dark mode
   },

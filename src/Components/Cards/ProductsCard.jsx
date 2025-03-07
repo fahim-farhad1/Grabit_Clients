@@ -16,7 +16,7 @@ const ProductsCard = ({
 }) => {
   const [mutation] = usePostCard();
   const [users] = useUsers(email);
-  console.log(users.email);
+  // console.log(users.email);
   const handleAddToCart = (id) => {
     const cartInfo = {
       userEmail: users.email,
