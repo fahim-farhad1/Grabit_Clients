@@ -11,6 +11,11 @@ import useCarts from "../../Hooks/useCarts";
 import useWishlist from "../../Hooks/useWishlist";
 import usePostwishList from "../../Hooks/usePostwishList";
 import useLocalStorage from "../../Hooks/useLocalStorage";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+
 const MiddleNav = () => {
   const { user, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
@@ -19,6 +24,11 @@ const MiddleNav = () => {
   const [, wishlist] = useWishlist();
   const [value, , , clearItems] = useLocalStorage("ProductIds", []);
   const [mutation] = usePostwishList();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setDrawerOpen(newOpen);
+  };
   // console.log("carts:---", user, value?.length, wishlist);
   const handleLogOut = () => {
     logOut()
@@ -56,6 +66,15 @@ const MiddleNav = () => {
       clearItems();
     }
   }, [user]);
+
+  // drawer content
+  const DrawerList = (
+    <Box sx={{ width: 350 }} role="presentation" onClick={toggleDrawer(false)}>
+      <List>
+        <p className="text-secondary font-semibold  text-lg p-3">My Cart</p>
+      </List>
+    </Box>
+  );
 
   return (
     <div ref={dropdownRef} className="flex justify-between items-center py-5">
@@ -121,25 +140,29 @@ const MiddleNav = () => {
           </div>
         </div>
 
-       <Link to='userDashboard/account'>
-       <button className="flex items-center gap-1">
-          <IoHeartOutline className="h-8 w-8" />
-          <div>
-            <p
-              className={`${
-                wishlist?.productId?.length || value?.length
-                  ? "font-bold text-[12px] bg-red-500 text-white px-[7px] py-[2px] rounded-full absolute top-[10px] right-[120px]"
-                  : "hidden"
-              } `}
-            >
-              {wishlist?.productId?.length || value?.length}
-            </p>
-          </div>
-        </button>
-       </Link>
-        <button  className="flex items-center gap-1 relative">
-          <FiShoppingCart className="h-8 w-8" />
-          <div>
+        <Link to="userDashboard/wishlist">
+          <button className="flex items-center gap-1">
+            <IoHeartOutline className="h-8 w-8" />
+            <div>
+              <p
+                className={`${
+                  wishlist?.productId?.length || value?.length
+                    ? "font-bold text-[12px] bg-red-500 text-white px-[7px] py-[2px] rounded-full absolute top-[10px] right-[120px]"
+                    : "hidden"
+                } `}
+              >
+                {wishlist?.productId?.length || value?.length}
+              </p>
+            </div>
+          </button>
+        </Link>
+        <div>
+          <button
+            onClick={toggleDrawer(true)}
+            className="flex items-center gap-1 relative"
+          >
+            <FiShoppingCart className="h-8 w-8" />
+
             <p
               className={`${
                 cart?.productId?.length && user
@@ -149,8 +172,15 @@ const MiddleNav = () => {
             >
               {cart?.productId?.length}
             </p>
-          </div>
-        </button>
+          </button>
+          <Drawer
+            anchor="right"
+            open={drawerOpen}
+            onClose={toggleDrawer(false)}
+          >
+            {DrawerList}
+          </Drawer>
+        </div>
       </div>
     </div>
   );

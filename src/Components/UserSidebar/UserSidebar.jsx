@@ -37,9 +37,9 @@ const UserSidebar = () => {
         <NavLink to="/userDashboard/orders">
           {({ isActive }) => (
             <button
-              className={`p-3 w-full text-start border ${
-                isActive ? "bg-red-500 text-white" : "bg-white text-secondary"
-              }`}
+            className={`p-3 w-full text-start border ${
+              isActive ? " text-primary" : "bg-white text-secondary"
+            }`}
             >
               My Orders
             </button>
@@ -49,9 +49,9 @@ const UserSidebar = () => {
         <NavLink to="/userDashboard/wishlist">
           {({ isActive }) => (
             <button
-              className={`p-3 w-full text-start border ${
-                isActive ? "bg-red-500 text-white" : "bg-white text-secondary"
-              }`}
+            className={`p-3 w-full text-start border ${
+              isActive ? " text-primary" : "bg-white text-secondary"
+            }`}
             >
               My Wishlist
             </button>

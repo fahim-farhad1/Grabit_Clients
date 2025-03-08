@@ -1,6 +1,7 @@
 import useWishListProducts from "../../../Hooks/useWishListProducts";
 import Loading from "../../Loading/Loading";
 import shopingCartIcon from "../../../assets/icons/shopping-cart.png";
+import deleteIcon from "../../../assets/icons/delete.png";
 import Swal from "sweetalert2";
 import useUsers from "../../../Hooks/useUsers";
 import usePostCard from "../../../Hooks/usePostCard";
@@ -42,12 +43,15 @@ const WishlistCart = ({ id, isRemove }) => {
     // remove products
   };
   const handleRemove = (id) => {
-    // isRemove(id);
-    const wishlistInfo = {
-      productId: id,
-      userEmail: users?.email,
-    };
-    removeProduct(wishlistInfo);
+    if (!users?.email) {
+      isRemove(id);
+    } else {
+      const wishlistInfo = {
+        productId: id,
+        userEmail: users?.email,
+      };
+      removeProduct(wishlistInfo);
+    }
   };
   return (
     <div className=" border-b border-primary flex justify-between items-center">
@@ -88,8 +92,8 @@ const WishlistCart = ({ id, isRemove }) => {
           </button>
         </div>
       </div>
-      <button className="" onClick={() => handleRemove(id)}>
-        Remove
+      <button className="flex " onClick={() => handleRemove(id)}>
+        <img className="h-6 w-6" src={deleteIcon} alt="" />
       </button>
     </div>
   );
