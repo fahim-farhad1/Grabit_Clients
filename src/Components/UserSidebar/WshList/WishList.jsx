@@ -4,13 +4,15 @@ import useWishlist from "../../../Hooks/useWishlist";
 import WishlistCart from "./WishlistCart";
 import Loading from "../../Loading/Loading";
 import useLocalStorage from "../../../Hooks/useLocalStorage";
+import { ShimmerTitle } from "react-shimmer-effects";
+import ShimmerMiniCarts from "../../Loading/ShimmerEffercts/ShimmerMiniCarts";
 
 const WishList = () => {
   const [, wishlist, isLoading] = useWishlist();
   const [value, , removeProducts] = useLocalStorage("ProductIds", []);
   console.log(wishlist);
   if (isLoading) {
-    return <Loading />;
+    return  <ShimmerMiniCarts />;
   }
   return (
     <div className="w-full shadow-sm bg-white rounded border p-3">

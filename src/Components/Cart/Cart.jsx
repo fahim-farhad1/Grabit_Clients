@@ -1,35 +1,46 @@
-import React from "react";
-import { FiShoppingCart } from "react-icons/fi";
+import { ShimmerButton, ShimmerTitle } from "react-shimmer-effects";
+import useWishListProducts from "../../Hooks/useWishListProducts";
+import ShimmerMiniCarts from "../Loading/ShimmerEffercts/ShimmerMiniCarts";
+import deleteIcon from "../../assets/icons/delete.png";
+import useUsers from "../../Hooks/useUsers";
+import usePatchCart from "../../Hooks/usePatchCart";
 
-const Cart = () => {
+const Cart = ({ id }) => {
+  const [wishListProducts, isLoading] = useWishListProducts(id, "cart");
+  const { name, price, weight, images } = wishListProducts;
+  
+  const [users] = useUsers();
+  const [removeProduct] = usePatchCart();
+
+
+  const handleRemove = (id) => {
+    const cartInfo = {
+      productId: id,
+      userEmail: users?.email,
+    };
+    removeProduct(cartInfo);
+  };
+
+  if (isLoading) {
+    return <ShimmerMiniCarts />;
+  }
   return (
-    <div className="drawer">
-      {/* <input id="my-drawer" type="checkbox" className="drawer-toggle" /> */}
-      <div className="drawer-content">
-        {/* Page content here */}
-        <label htmlFor="my-drawer" className="btn btn-primary drawer-button">
-          Open drawer
-        </label>
+    <div className="flex justify-between items-center border rounded">
+      <img className="h-20 w-20" src={images[0]} alt="" />
+      <div>
+        <p className="text-secondary font-semibold">{name}</p>
+        <span className="flex space-x-1">
+          <p className="text-secondary">Price: {price}</p> <p>x</p>
+          <p className="text-secondary">{weight}</p>
+        </span>
       </div>
-      <div className="drawer-side">
-        <label
-          htmlFor="my-drawer"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          {/* Sidebar content here */}
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
-        </ul>
+      <div>
+        <button className="flex " onClick={() => handleRemove(id)}>
+          <img className="h-6 w-6" src={deleteIcon} alt="" />
+        </button>
       </div>
     </div>
   );
 };
 
 export default Cart;
-

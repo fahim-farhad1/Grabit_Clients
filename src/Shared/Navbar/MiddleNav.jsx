@@ -15,6 +15,7 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
+import Cart from "../../Components/Cart/Cart";
 
 const MiddleNav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -29,7 +30,7 @@ const MiddleNav = () => {
   const toggleDrawer = (newOpen) => () => {
     setDrawerOpen(newOpen);
   };
-  // console.log("carts:---", user, value?.length, wishlist);
+  console.log("carts:---", cart);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -67,11 +68,50 @@ const MiddleNav = () => {
     }
   }, [user]);
 
+  console.log(cart);
+
   // drawer content
   const DrawerList = (
-    <Box sx={{ width: 350 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 350 }} role="presentation">
       <List>
         <p className="text-secondary font-semibold  text-lg p-3">My Cart</p>
+      </List>
+      <Divider />
+      <List>
+        <div className="overflow-y-auto h-[490px] space-y-2 px-3">
+          {cart?.productId?.map((id) => (
+            <Cart key={id} id={id} />
+          ))}
+        </div>
+      </List>
+      <Divider />
+      <List>
+        <p className="text-secondary font-semibold  text-lg px-3  ">
+          Checkout Summery{" "}
+        </p>
+        <div className="px-3 space-y-3">
+          <div>
+            <div className="flex justify-between">
+              <p>Subtotal</p> <p>1000 Tk.</p>
+            </div>
+            <hr className="border-dashed" />
+          </div>
+          <div>
+            <div className="flex justify-between">
+              <p>Online Fee</p> <p>1000 Tk.</p>
+            </div>
+            <hr className="border-dashed" />
+          </div>
+          <div>
+            <div className="flex justify-between">
+              <p>Total</p> <p>1000 Tk.</p>
+            </div>
+            <hr className="border-dashed" />
+          </div>
+          <button className="bg-primary text-white font-semibold py-2 w-full rounded  active:bg-[#4c9279] duration-100">
+            Press to Checkout
+          </button>
+        </div>
       </List>
     </Box>
   );

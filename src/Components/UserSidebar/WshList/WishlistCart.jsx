@@ -8,7 +8,7 @@ import usePostCard from "../../../Hooks/usePostCard";
 import usePatchWishList from "../../../Hooks/usePatchWishList";
 
 const WishlistCart = ({ id, isRemove }) => {
-  const [wishListProducts, isLoading] = useWishListProducts(id);
+  const [wishListProducts, isLoading] = useWishListProducts(id, 'wishlist');
   const [users] = useUsers();
   const [mutation] = usePostCard();
   const [removeProduct] = usePatchWishList();
