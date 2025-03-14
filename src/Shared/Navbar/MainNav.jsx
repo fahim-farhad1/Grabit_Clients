@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { BiCategory } from "react-icons/bi";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import AiIcon from "../../assets/icons/chatbot.png";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import useCategories from "../../Hooks/useCategories";
 
 
@@ -57,7 +57,9 @@ const MainNav = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+ 
 
+  // navItems for the navbar
   const NavItems = (
     <>
       <NavLink
@@ -150,6 +152,8 @@ const MainNav = () => {
       }`}
     >
       <div className="relative inline-block text-left" ref={dropdownRef}>
+
+        {/* All categories dropdown */}
         <button
           onClick={() => setOpen(!open)}
           className="bg-primary py-2 px-2 rounded w-[180px] flex gap-1 items-center text-white font-semibold"
@@ -171,15 +175,16 @@ const MainNav = () => {
           }`}
         >
           {Categories.map((category) => (
-            <div key={category.id} className="flex items-center gap-2">
-              <button
-                key={category._id}
-                className="group text-secondary hover:text-primary hover:font-semibold p-2 w-full text-left hover:bg-white hover:border border-primary rounded flex justify-between items-center hover:shadow "
-              >
-                {category.name}
-                <FaAngleRight className="opacity-0  transition-opacity h-6 w-6 group-hover:opacity-100" />
-              </button>
-            </div>
+            <Link to={`/products/${category.name}`}><div key={category.id} className="flex items-center gap-2">
+            <button
+            onClick={() => setOpen(false)}
+              key={category._id}
+              className="group text-secondary hover:text-primary hover:font-semibold p-2 w-full text-left hover:bg-white hover:border border-primary rounded flex justify-between items-center hover:shadow "
+            >
+              {category.name}
+              <FaAngleRight className="opacity-0  transition-opacity h-6 w-6 group-hover:opacity-100" />
+            </button>
+          </div></Link>
           ))}
         </div>
       </div>

@@ -20,6 +20,7 @@ import UserDashboard from "./Layouts/UserDashboard";
 import MyAccount from "./Components/UserSidebar/MyAccount/MyAccount";
 import WishList from "./Components/UserSidebar/WshList/WishList";
 import PriceCalculation from "./Components/Context/PriceCalculation";
+import Categories from "./Pages/Categories/Categories";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
@@ -53,6 +54,7 @@ createRoot(document.getElementById("root")).render(
                   path="/offers/:category/:slug/:id"
                   element={<SingleProductsPage />}
                 />
+                <Route path="/products/:category" element={<Categories />} />
                 {/* user Dashboard  */}
                 <Route path="userDashboard" element={<UserDashboard />}>
                   <Route path="account" element={<MyAccount />} />

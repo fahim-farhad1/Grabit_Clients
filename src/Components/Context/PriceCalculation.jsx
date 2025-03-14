@@ -19,7 +19,7 @@ export const PriceCalculation = ({ children }) => {
             let total = 0;
 
             for (const productId of carts?.productId) {
-                const [wishListProduct] = await useWishListProducts(productId, "cart");
+                const [wishListProduct] = useWishListProducts(productId, "cart");
                 if (wishListProduct && wishListProduct?.price) {
                     total += wishListProduct?.price;
                 }

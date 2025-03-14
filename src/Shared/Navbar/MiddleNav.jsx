@@ -16,7 +16,9 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Cart from "../../Components/Cart/Cart";
-import PriceCalculation, { usePriceContext } from "../../Components/Context/PriceCalculation";
+import PriceCalculation, {
+  usePriceContext,
+} from "../../Components/Context/PriceCalculation";
 
 const MiddleNav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -76,7 +78,12 @@ const MiddleNav = () => {
   const DrawerList = (
     <Box sx={{ width: 350 }} role="presentation">
       <List>
-        <p className="text-secondary font-semibold  text-lg p-3">My Cart</p>
+        <div className="flex justify-between items-center px-3">
+          <p className="text-secondary font-semibold  text-lg">My Cart</p>
+          <button onClick={() => setDrawerOpen(false)} className="btn btn-sm btn-circle hover:bg-red-500 btn-ghost hover:text-white absolute right-2 top-2">
+            ✕
+          </button>
+        </div>
       </List>
       <Divider />
       <List>
@@ -88,33 +95,33 @@ const MiddleNav = () => {
       </List>
       <Divider />
       <List>
-            <p className="text-secondary font-semibold  text-lg px-3  ">
-                Checkout Summary{" "}
-            </p>
-            <div className="px-3 space-y-3">
-                <div>
-                    <div className="flex justify-between">
-                        <p>Subtotal</p> <p>{totalPrice} Tk.</p>
-                    </div>
-                    <hr className="border-dashed" />
-                </div>
-                <div>
-                    <div className="flex justify-between">
-                        <p>Online Fee</p> <p>1000 Tk.</p>
-                    </div>
-                    <hr className="border-dashed" />
-                </div>
-                <div>
-                    <div className="flex justify-between">
-                        <p>Total</p> <p>{totalPrice + 1000} Tk.</p>
-                    </div>
-                    <hr className="border-dashed" />
-                </div>
-                <button className="bg-primary text-white font-semibold py-2 w-full rounded  active:bg-[#4c9279] duration-100">
-                    Press to Checkout
-                </button>
+        <p className="text-secondary font-semibold  text-lg px-3  ">
+          Checkout Summary{" "}
+        </p>
+        <div className="px-3 space-y-3">
+          <div>
+            <div className="flex justify-between">
+              <p>Subtotal</p> <p>{totalPrice} Tk.</p>
             </div>
-        </List>
+            <hr className="border-dashed" />
+          </div>
+          <div>
+            <div className="flex justify-between">
+              <p>Online Fee</p> <p>1000 Tk.</p>
+            </div>
+            <hr className="border-dashed" />
+          </div>
+          <div>
+            <div className="flex justify-between">
+              <p>Total</p> <p>{totalPrice + 1000} Tk.</p>
+            </div>
+            <hr className="border-dashed" />
+          </div>
+          <button className="bg-primary text-white font-semibold py-2 w-full rounded  active:bg-[#4c9279] duration-100">
+            Press to Checkout
+          </button>
+        </div>
+      </List>
     </Box>
   );
 
