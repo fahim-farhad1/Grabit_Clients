@@ -31,12 +31,14 @@ const usePostwishList = () => {
         Toast.fire({
           icon: "success",
           title: "products added successfully",
+          timer: 900,
         });
         refetch();
       } else {
         Toast.fire({
           icon: "error",
           title: "products already in wishlist!",
+          timer: 900,
         });
       }
     },

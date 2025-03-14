@@ -5,7 +5,7 @@ import useCarts from "./useCarts";
 
 const usePatchCart = () => {
   const instance = useAxios();
-  const [refetch,] = useCarts();
+  const [refetch] = useCarts();
   const { mutate: removeCart } = useMutation({
     mutationFn: async (data) => {
       const res = await instance.patch("/cart", data);

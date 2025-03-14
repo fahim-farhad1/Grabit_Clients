@@ -16,6 +16,7 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Cart from "../../Components/Cart/Cart";
+import PriceCalculation, { usePriceContext } from "../../Components/Context/PriceCalculation";
 
 const MiddleNav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -26,6 +27,7 @@ const MiddleNav = () => {
   const [value, , , clearItems] = useLocalStorage("ProductIds", []);
   const [mutation] = usePostwishList();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { totalPrice } = usePriceContext();
 
   const toggleDrawer = (newOpen) => () => {
     setDrawerOpen(newOpen);
@@ -86,33 +88,33 @@ const MiddleNav = () => {
       </List>
       <Divider />
       <List>
-        <p className="text-secondary font-semibold  text-lg px-3  ">
-          Checkout Summery{" "}
-        </p>
-        <div className="px-3 space-y-3">
-          <div>
-            <div className="flex justify-between">
-              <p>Subtotal</p> <p>1000 Tk.</p>
+            <p className="text-secondary font-semibold  text-lg px-3  ">
+                Checkout Summary{" "}
+            </p>
+            <div className="px-3 space-y-3">
+                <div>
+                    <div className="flex justify-between">
+                        <p>Subtotal</p> <p>{totalPrice} Tk.</p>
+                    </div>
+                    <hr className="border-dashed" />
+                </div>
+                <div>
+                    <div className="flex justify-between">
+                        <p>Online Fee</p> <p>1000 Tk.</p>
+                    </div>
+                    <hr className="border-dashed" />
+                </div>
+                <div>
+                    <div className="flex justify-between">
+                        <p>Total</p> <p>{totalPrice + 1000} Tk.</p>
+                    </div>
+                    <hr className="border-dashed" />
+                </div>
+                <button className="bg-primary text-white font-semibold py-2 w-full rounded  active:bg-[#4c9279] duration-100">
+                    Press to Checkout
+                </button>
             </div>
-            <hr className="border-dashed" />
-          </div>
-          <div>
-            <div className="flex justify-between">
-              <p>Online Fee</p> <p>1000 Tk.</p>
-            </div>
-            <hr className="border-dashed" />
-          </div>
-          <div>
-            <div className="flex justify-between">
-              <p>Total</p> <p>1000 Tk.</p>
-            </div>
-            <hr className="border-dashed" />
-          </div>
-          <button className="bg-primary text-white font-semibold py-2 w-full rounded  active:bg-[#4c9279] duration-100">
-            Press to Checkout
-          </button>
-        </div>
-      </List>
+        </List>
     </Box>
   );
 
@@ -120,7 +122,7 @@ const MiddleNav = () => {
     <div ref={dropdownRef} className="flex justify-between items-center py-5">
       <div>
         <Link to="/">
-          <img className="h-10 w-40" src={logo} alt="Grabit Logo" />
+          <img className="h-10 w-[170px]" src={logo} alt="Grabit Logo" />
         </Link>
       </div>
       {/* Search bar */}

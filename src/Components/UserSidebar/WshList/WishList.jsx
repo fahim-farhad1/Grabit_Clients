@@ -12,7 +12,7 @@ const WishList = () => {
   const [value, , removeProducts] = useLocalStorage("ProductIds", []);
   console.log(wishlist);
   if (isLoading) {
-    return  <ShimmerMiniCarts />;
+    return  <Loading />;
   }
   return (
     <div className="w-full shadow-sm bg-white rounded border p-3">

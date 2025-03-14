@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import useUsers from "../../../Hooks/useUsers";
 import usePostCard from "../../../Hooks/usePostCard";
 import usePatchWishList from "../../../Hooks/usePatchWishList";
+import ShimmerMiniCarts from "../../Loading/ShimmerEffercts/ShimmerMiniCarts";
 
 const WishlistCart = ({ id, isRemove }) => {
   const [wishListProducts, isLoading] = useWishListProducts(id, 'wishlist');
@@ -16,7 +17,7 @@ const WishlistCart = ({ id, isRemove }) => {
   const { name, price, discount, images, category, stock } = wishListProducts;
 
   if (isLoading) {
-    return <Loading />;
+    return <ShimmerMiniCarts />;
   }
   const handelCart = (id) => {
     if (users?.email) {

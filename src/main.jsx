@@ -19,52 +19,54 @@ import SingleProductsPage from "./Pages/SingleProductsPage/SingleProductsPage";
 import UserDashboard from "./Layouts/UserDashboard";
 import MyAccount from "./Components/UserSidebar/MyAccount/MyAccount";
 import WishList from "./Components/UserSidebar/WshList/WishList";
+import PriceCalculation from "./Components/Context/PriceCalculation";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            {/* main layout  */}
-            <Route element={<MainLayout />}>
-              <Route index element={<Home />} />
-              <Route path="products" element={<Products />} />
-              <Route path="seasonal" element={<Seasonal />} />
-              <Route path="offers" element={<Offers />} />
-              <Route path="contact" element={<Contacts />} />
-              <Route path="about" element={<About />} />
-              <Route
-                path="/products/:category/:slug/:id"
-                element={<SingleProductsPage />}
-              />
-              <Route
-                path="/:category/:slug/:id"
-                element={<SingleProductsPage />}
-              />
-              <Route
-                path="/seasonal/:category/:slug/:id"
-                element={<SingleProductsPage />}
-              />
-              <Route
-                path="/offers/:category/:slug/:id"
-                element={<SingleProductsPage />}
-              />
-            {/* user Dashboard  */}
-            <Route path="userDashboard" element={<UserDashboard />}>
-            <Route path="account" element={<MyAccount />} />
-            <Route path="wishlist" element={<WishList />} />
-            
-            </Route>
-            </Route>
-            {/* Auth Layout  */}
-            <Route element={<LoginLayout />}>
-              <Route path="login" element={<Login />} />
-              <Route path="signUp" element={<SignUp />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <PriceCalculation>
+          <BrowserRouter>
+            <Routes>
+              {/* main layout  */}
+              <Route element={<MainLayout />}>
+                <Route index element={<Home />} />
+                <Route path="products" element={<Products />} />
+                <Route path="seasonal" element={<Seasonal />} />
+                <Route path="offers" element={<Offers />} />
+                <Route path="contact" element={<Contacts />} />
+                <Route path="about" element={<About />} />
+                <Route
+                  path="/products/:category/:slug/:id"
+                  element={<SingleProductsPage />}
+                />
+                <Route
+                  path="/:category/:slug/:id"
+                  element={<SingleProductsPage />}
+                />
+                <Route
+                  path="/seasonal/:category/:slug/:id"
+                  element={<SingleProductsPage />}
+                />
+                <Route
+                  path="/offers/:category/:slug/:id"
+                  element={<SingleProductsPage />}
+                />
+                {/* user Dashboard  */}
+                <Route path="userDashboard" element={<UserDashboard />}>
+                  <Route path="account" element={<MyAccount />} />
+                  <Route path="wishlist" element={<WishList />} />
+                </Route>
+              </Route>
+              {/* Auth Layout  */}
+              <Route element={<LoginLayout />}>
+                <Route path="login" element={<Login />} />
+                <Route path="signUp" element={<SignUp />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </PriceCalculation>
       </QueryClientProvider>
     </AuthProvider>
   </StrictMode>

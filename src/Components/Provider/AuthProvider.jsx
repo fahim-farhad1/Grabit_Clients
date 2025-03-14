@@ -9,8 +9,6 @@ import {
 import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import auth from "../Firebase/Firebase.config";
-import useLocalStorage from "../../Hooks/useLocalStorage";
-import usePostwishList from "../../Hooks/usePostwishList";
 
 export const AuthContext = createContext(null);
 

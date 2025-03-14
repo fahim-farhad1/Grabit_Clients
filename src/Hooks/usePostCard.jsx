@@ -29,13 +29,16 @@ const usePostCard = () => {
       if (data.modifiedCount != 0) {
         Toast.fire({
           icon: "success",
-          title: "products added successfully"
+          title: "products added successfully", 
+          timer: 900
+
         });
         refetch()
       } else {
         Toast.fire({
           icon: "error",
-          title: "product already in cart"
+          title: "product already in cart",
+          timer: 900
         });
       }
     },
