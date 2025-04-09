@@ -41,7 +41,7 @@ const MainLayout = () => {
     <div>
       <Navbar />
       <div
-        className={`min-h-[calc(100vh-328px)] ${
+        className={` ${
           scrollDirection === "down" ? "mt-[144px]" : ""
         }`}
       >

@@ -14,7 +14,6 @@ import SignUp from "./Pages/Auth/SignUp";
 import Login from "./Pages/Auth/Login";
 import LoginLayout from "./Layouts/LoginLayout";
 import AuthProvider from "./Components/Provider/AuthProvider";
-import PrivateRoutes from "./Components/PrivateRoutes/PrivateRoutes";
 import SingleProductsPage from "./Pages/SingleProductsPage/SingleProductsPage";
 import UserDashboard from "./Layouts/UserDashboard";
 import MyAccount from "./Components/UserSidebar/MyAccount/MyAccount";
