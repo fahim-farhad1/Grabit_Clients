@@ -16,7 +16,7 @@ const debounce = (func, delay) => {
 
 const MainNav = () => {
   const [Categories] = useCategories();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
   const dropdownRef = useRef(null);
   const [scrollDirection, setScrollDirection] = useState("up"); // Default to up
   const [lastScrollY, setLastScrollY] = useState(0);
